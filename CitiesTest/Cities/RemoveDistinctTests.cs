@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using System.Text.Json;
+using Cities_Latitude_Longitude;
 using Cities_Latitude_Longitude.Model;
 
 namespace CitiesTest.Cities;
@@ -30,6 +32,16 @@ public class RemoveDistinctTests
             csvWriter.WriteHeader(typeof(City));
             csvWriter.WriteRecords(cities1);
         }
-        
+
+    }
+    [TestMethod()]
+    public void ConvertCSVToJson()
+    {
+        var cities = DataFromCSV.LoadCities().Distinct();
+        var citiesJson = JsonSerializer.Serialize(cities);
+        string rootPath = Application.GetSolutionRootPath();
+
+        var filePath = $@"{rootPath}Cities_Latitude_Longitude/Source/cities.json";
+        File.WriteAllText(filePath, citiesJson);
     }
 }
