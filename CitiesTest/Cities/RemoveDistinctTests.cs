@@ -41,7 +41,7 @@ public class RemoveDistinctTests
         var citiesJson = JsonSerializer.Serialize(cities);
         string rootPath = Application.GetSolutionRootPath();
 
-        var filePath = $@"{rootPath}Cities_Latitude_Longitude/Source/cities.json";
+        var filePath = $@"{rootPath}Cities_Latitude_Longitude/Source/Processed/cities.json";
         File.WriteAllText(filePath, citiesJson);
     }
 }
